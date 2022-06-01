@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+기획
 
-## Getting Started
+### **a. 기획**
 
-First, run the development server:
+할 일(Todo) 관리 프로그램(이하 "투두리스트")을 제작합니다. 투두리스트가 무엇인지 궁금하다면 [TodoMVC](https://todomvc.com/examples/react/#/)를 확인해주세요.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+투두리스트는 할 일을 등록하고 수정/삭제 할 수 있으며, 각 할 일에 태그를 등록하여 관리 할 수 있습니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+투두리스트에서 관리해야하는 데이터는 아래와 같습니다.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **할 일**
+  - 제목
+  - 상세설명
+  - 태그
+  - 생성일
+  - 수정일
+  - 마감목표일
+  - 완료일
+  - 완료여부
+- **태그**
+  - 이름
+  - 글자 색상
+  - 배경 색상
+  - 생성일
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+요구사항
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**할 일**
 
-## Learn More
+- [ ] 할 일 입력 폼에는 제목, 상세설명, 태그, 마감 목표일을 입력할 수 있습니다.
+- [ ] 마감 목표일은 달력 UI를 이용합니다.
+- [ ] 입력폼에서 "제출하기" 버튼을 누르면 목록에서 추가된 할 일을 확인할 수 있습니다.
+- [ ] 목록
+  - [ ] 목록에서 바로 체크박스를 누르면 완료여부를 체크할 수 있습니다.
+  - [ ] 목록에서 "수정" 버튼을 누르면 해당 투두를 수정 할 수 있습니다.
+  - [ ] 목록에서 "삭제" 버튼을 누르면 삭제 됩니다.
+  - [ ] 할 일은 태그별, 완료여부별, 마감 기간, 생성일 기준으로 필터를 할 수 있습니다.
+  - [ ] 완료한 할 일들은 일괄 삭제가 가능합니다.
+  - [ ] 마감일이 3일 이내인 할 일은 긴급함 표시가 보입니다.
+- [ ] 할 일 삭제시 진짜로 삭제할 것인지 한번 더 물어보고 삭제됩니다.
 
-To learn more about Next.js, take a look at the following resources:
+**태그**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] 할 일 입력 폼에서 태그를 여러개 입력할 수 있습니다.
+- [ ] 같은 이름의 태그는 중복입력이 안됩니다.
+- [ ] 할 일 목록에서 태그는 색상으로 구분되어야 합니다.
+- [ ] 목록에서 서로 다른 할 일에 같은 태그가 있다면, 같은 색으로 표시됩니다.
+- [ ] 태그의 색상을 커스텀하게 바꿀 수 있습니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**공통**
 
-## Deploy on Vercel
+- [ ] 입력할 때 validation 처리가 있습니다.
+- [ ] 브라우저창을 닫았다가 다시 열어도 데이터가 남아있습니다.
+- [ ] 입력 중 뒤로가기 또는 브라우저를 닫으려고 할 때 입력된 내용이 삭제 될 수 있음을 알려줍니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+추가 요구사항
+core component를 따로 빼는 작업
+도메인 주도 설계를 적용해본다고 생각하기
+DI 원칙을 생각하며 작성해볼 것 컨트롤러가 모든 것을 통제한다
+REDUX 같은 것들은 사용하지 않고, props drilling을 효율적으로 할 수 있는 구조를 고민해보기
+Controller 과 View는 완벽하게 분리하는 느낌으로 작업할 것
+모든 것은 다 styled components로 래핑해서 변수명으로 관리하기 쉽게 만들어보기
