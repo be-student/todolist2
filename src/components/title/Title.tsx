@@ -1,7 +1,13 @@
+import { FC } from "react";
 import { useTheme } from "styled-components";
 import Box, { BigBox } from "../core/StyledComp";
 
-const Title = () => {
+interface Props {
+  setModal: any;
+  setEdit: any;
+}
+
+const Title: FC<Props> = ({ setModal, setEdit }) => {
   const theme = useTheme();
   return (
     <BigBox display="flex" alignItems="center" padding="0 1rem">
@@ -18,6 +24,10 @@ const Title = () => {
         backgroundColor={theme.backgroundColors.blue}
         color="white"
         padding="1rem 1rem"
+        onClick={() => {
+          setModal(true);
+          setEdit(0);
+        }}
       >
         + New Task
       </Box>

@@ -37,7 +37,7 @@ const Page: FC<Props> = ({
   setFilterTag,
 }) => {
   const theme = useTheme();
-  const [modal, setModal] = useState<boolean>(false);
+  const [modal, setModal] = useState<boolean>(true);
   const Header = [
     <Box key="1" flex="1" textAlign="center">
       <Link href="/">할 일</Link>
@@ -90,7 +90,7 @@ const Page: FC<Props> = ({
     <PageBackground backgroundColor={theme.backgroundColors.primary}>
       <PageLayout backgroundColor={theme.backgroundColors.white}>
         <BigBox display="flex" flexDirection="column" alignItems="center">
-          <Title></Title>
+          <Title setModal={setModal} setEdit={setEdit}></Title>
           <Bar Components={Header}></Bar>
           <Line />
         </BigBox>
