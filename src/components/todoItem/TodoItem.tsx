@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useTheme } from "styled-components";
-import { checkTask, tags, tasks } from "../../todolist/TodoSetting";
+import { checkTask, deleteTask, tags, tasks } from "../../todolist/TodoSetting";
 import { DeleteButton, EditButton } from "../core/Comp";
 import Box, { BigBox, Input } from "../core/StyledComp";
 
@@ -53,7 +53,12 @@ const TodoItem: FC<Props> = ({
               {task.title} {task.description}
               <Box>
                 <EditButton />
-                <DeleteButton />
+                <DeleteButton
+                  onClick={() => {
+                    console.log("delete");
+                    deleteTask(tasks, setTasks, task.id);
+                  }}
+                />
               </Box>
             </Box>
           );
