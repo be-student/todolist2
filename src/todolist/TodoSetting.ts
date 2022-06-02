@@ -97,6 +97,7 @@ export const editTask = (
 ) => {
   const index = Tasks.findIndex((task) => task.id === newTask.id);
   const newTaskArray: any = [...Tasks];
+  newTaskArray[index].editedAt = new Date().valueOf();
   for (const p in newTask) {
     newTaskArray[index][p] = newTask[p];
   }

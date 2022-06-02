@@ -52,10 +52,14 @@ const TodoItem: FC<Props> = ({
               ></Input>
               {task.title} {task.description}
               <Box>
-                <EditButton />
+                <EditButton
+                  onClick={() => {
+                    setEdit(task.id);
+                    setModal(true);
+                  }}
+                />
                 <DeleteButton
                   onClick={() => {
-                    console.log("delete");
                     deleteTask(tasks, setTasks, task.id);
                   }}
                 />

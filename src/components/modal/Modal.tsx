@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { addTask, onSubmit, tasks } from "../../todolist/TodoSetting";
 import Box, { BigBox, BlueBox, Input, Tag } from "../core/StyledComp";
 import { ModalItem, ModalWrapper } from "./ModalComp";
@@ -18,7 +18,32 @@ const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
   const [bgColor, setBgColor] = useState<string>("#FFFFFF");
   const title = useInput("");
   const description = useInput("");
-  const tags = useInput("");
+  const tag = useInput("");
+  const [tags, setTags] = useState<Array<string>>([]);
+  useEffect(() => {
+    if (edit === 0) {
+      //새로운 태스크
+      title.setValue("");
+      description.setValue("");
+      setColor("#000000");
+      setBgColor("#FFFFFF");
+      setGoal(new Date());
+      tag.setValue("");
+      setComplete(false);
+      setTags([]);
+    } else {
+      const editedTask = tasks.find((task) => task.id === edit) as tasks;
+      title.setValue(editedTask.title);
+      description.setValue(editedTask.description);
+      setColor("#000000");
+      setBgColor("#FFFFFF");
+      setGoal(new Date(editedTask.goalAt));
+      tag.setValue("");
+      setComplete(editedTask.complete);
+      setTags([...editedTask.tags]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [edit]);
   return (
     <ModalWrapper>
       <ModalItem>
@@ -68,12 +93,12 @@ const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
             value={bgColor}
             onChange={(e) => setBgColor(e.target.value)}
           ></Input>
-          <Input type="text" value={tags.value} onChange={tags.onChange} />
+          <Input type="text" value={tag.value} onChange={tag.onChange} />
         </BigBox>
         <BigBox display="flex" justifyContent="space-between">
           <Box>Example</Box>
           <Tag color={color} backgroundColor={bgColor}>
-            {title.value}
+            {tag.value}
           </Tag>
         </BigBox>
         <BigBox display="flex" justifyContent="space-between">
@@ -85,7 +110,7 @@ const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
                 title.value,
                 description.value,
                 goal,
-                [],
+                tags,
                 tasks,
                 setTasks,
                 complete,
