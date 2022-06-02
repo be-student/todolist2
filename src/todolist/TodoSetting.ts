@@ -4,6 +4,7 @@ export interface tasks {
   description: string;
   tags: Array<string>;
   complete: boolean;
+  editedAt: number;
   createdAt: number;
   goalAt: number;
 }
@@ -23,6 +24,7 @@ export const initialTasks: Array<tasks> = [
     tags: ["tag2", "tag3"],
     complete: true,
     createdAt: new Date().valueOf(),
+    editedAt: new Date().valueOf(),
     goalAt: new Date().valueOf() + 1000 * 60 * 60 * 24 * 4,
   },
   {
@@ -32,6 +34,7 @@ export const initialTasks: Array<tasks> = [
     tags: ["tag1", "tag2"],
     complete: false,
     createdAt: new Date().valueOf(),
+    editedAt: new Date().valueOf(),
     goalAt: new Date().valueOf() + 1000 * 60 * 60 * 24 * 2,
   },
 ];
@@ -105,6 +108,55 @@ export const editTag = (tags: tags, setTags: any, editTag: any) => {
     backgroundColor: editTag.backgroundColor,
   };
   setTags((tags[editTag.title] = tag));
+};
+export const onSubmit = (
+  edit: number,
+  title: string,
+  description: string,
+  goalAt: Date,
+  tagArray: Array<string>,
+  tasks: Array<tasks>,
+  setTasks: any,
+  complete: boolean,
+  setModal: any
+) => {
+  if (title === "") {
+    alert("please enter title");
+    return;
+  }
+  if (description === "") {
+    alert("please enter description");
+    return;
+  }
+  if (edit === 0) {
+    //ADD
+    const lastTask: tasks = tasks[tasks.length - 1];
+    const newTask: tasks = {
+      id: lastTask.id + 1,
+      description,
+      title,
+      goalAt: goalAt.valueOf(),
+      createdAt: new Date().valueOf(),
+      editedAt: new Date().valueOf(),
+      tags: tagArray,
+      complete: complete,
+    };
+    const newTaskArray = [...tasks, newTask];
+    setTasks(newTaskArray);
+    setModal(false);
+    return;
+  }
+  const editIndex: number = tasks.findIndex((task) => task.id === edit);
+  const newTaskArray = [...tasks];
+  newTaskArray[editIndex].complete = complete;
+  newTaskArray[editIndex].description = description;
+  newTaskArray[editIndex].editedAt = new Date().valueOf();
+  newTaskArray[editIndex].goalAt = goalAt.valueOf();
+  newTaskArray[editIndex].tags = tagArray;
+  newTaskArray[editIndex].title = title;
+  setTasks(newTaskArray);
+  setModal(false);
+  return;
 };
 export const deleteTag = (
   tags: tags,

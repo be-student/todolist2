@@ -24,5 +24,6 @@ export const ModalItem = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 `;

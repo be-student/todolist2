@@ -59,6 +59,10 @@ export const Line = styled.div`
   width: 90%;
 `;
 
+export const Tag = styled(Box)`
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+`;
 export const Input = styled.input``;
 
 export default Box;

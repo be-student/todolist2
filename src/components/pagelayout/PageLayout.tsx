@@ -37,7 +37,7 @@ const Page: FC<Props> = ({
   setFilterTag,
 }) => {
   const theme = useTheme();
-  const [modal, setModal] = useState<boolean>(true);
+  const [modal, setModal] = useState<boolean>(false);
   const Header = [
     <Box key="1" flex="1" textAlign="center">
       <Link href="/">할 일</Link>
@@ -109,7 +109,14 @@ const Page: FC<Props> = ({
           <Bar Components={Footer}></Bar>
         </BigBox>
       </PageLayout>
-      {modal && <Modal />}
+      {modal && (
+        <Modal
+          tasks={tasks}
+          setTasks={setTasks}
+          edit={edit}
+          setModal={setModal}
+        />
+      )}
     </PageBackground>
   );
 };
