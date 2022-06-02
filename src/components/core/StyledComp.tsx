@@ -16,6 +16,9 @@ interface Props {
   textAlign?: string;
   width?: string;
 }
+interface Inp {
+  width?: string;
+}
 export const WhiteButton = styled.button`
   border: none;
   border-radius: 10px;
@@ -61,8 +64,11 @@ export const Line = styled.div`
 
 export const Tag = styled(Box)`
   padding: 0.5rem 0.5rem;
+  margin-right: 0.5rem;
   border-radius: 5px;
 `;
-export const Input = styled.input``;
+export const Input = styled.input<Inp>`
+  width: ${(props) => props.width};
+`;
 
 export default Box;

@@ -1,6 +1,18 @@
 import { FC, useEffect, useState } from "react";
-import { addTask, onSubmit, tasks } from "../../todolist/TodoSetting";
-import Box, { BigBox, BlueBox, Input, Tag } from "../core/StyledComp";
+import {
+  addTask,
+  editTag,
+  onSubmit,
+  tags,
+  tasks,
+} from "../../todolist/TodoSetting";
+import Box, {
+  BigBox,
+  BlueBox,
+  GrayButton,
+  Input,
+  Tag,
+} from "../core/StyledComp";
 import { ModalItem, ModalWrapper } from "./ModalComp";
 import DatePicker from "react-datepicker";
 import useInput from "../core/Hooks";
@@ -10,8 +22,17 @@ interface Props {
   setTasks: any;
   edit: number;
   setModal: any;
+  allTags: tags;
+  setAllTags: any;
 }
-const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
+const Modal: FC<Props> = ({
+  tasks,
+  setTasks,
+  edit,
+  setModal,
+  allTags,
+  setAllTags,
+}) => {
   const [goal, setGoal] = useState<Date>(new Date());
   const [complete, setComplete] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#000000");
@@ -93,13 +114,43 @@ const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
             value={bgColor}
             onChange={(e) => setBgColor(e.target.value)}
           ></Input>
-          <Input type="text" value={tag.value} onChange={tag.onChange} />
+          <Input
+            width="20%"
+            placeholder="tag"
+            type="text"
+            value={tag.value}
+            onChange={tag.onChange}
+          />
+          <GrayButton
+            onClick={() => {
+              const newTag = {
+                title: tag.value,
+                color: color,
+                backgroundColor: bgColor,
+              };
+              editTag(allTags, setAllTags, newTag);
+              setTags([...tags, tag.value]);
+            }}
+          >
+            submit
+          </GrayButton>
         </BigBox>
         <BigBox display="flex" justifyContent="space-between">
           <Box>Example</Box>
           <Tag color={color} backgroundColor={bgColor}>
             {tag.value}
           </Tag>
+        </BigBox>
+        <BigBox display="flex">
+          {tags.map((tag) => (
+            <Tag
+              key={tag}
+              color={allTags[tag].color}
+              backgroundColor={allTags[tag].backgroundColor}
+            >
+              {tag}
+            </Tag>
+          ))}
         </BigBox>
         <BigBox display="flex" justifyContent="space-between">
           <BlueBox
@@ -120,6 +171,7 @@ const Modal: FC<Props> = ({ tasks, setTasks, edit, setModal }) => {
           >
             Submit
           </BlueBox>
+
           <BlueBox
             padding="1rem 1rem"
             onClick={() => {

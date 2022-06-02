@@ -115,6 +115,8 @@ const Page: FC<Props> = ({
           setTasks={setTasks}
           edit={edit}
           setModal={setModal}
+          allTags={tags}
+          setAllTags={setTags}
         />
       )}
     </PageBackground>
