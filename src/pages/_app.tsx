@@ -1,10 +1,19 @@
 import "../styles/reset.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "styled-components";
-const theme = {
+import { DefaultTheme, ThemeProvider } from "styled-components";
+const theme: DefaultTheme = {
   colors: {
-    primary: "#f7f6f2",
+    primary: "#F0F2F5",
+    blue: "#1877F2",
+    white: "#FFFFFF",
+    black: "#000000",
+  },
+  backgroundColors: {
+    primary: "#F0F2F5",
+    white: "#FFFFFF",
+    blue: "#1877F2",
+    black: "#000000",
   },
 };
 

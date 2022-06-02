@@ -56,7 +56,6 @@
 추가 요구사항
 core component를 따로 빼는 작업
 도메인 주도 설계를 적용해본다고 생각하기
-DI 원칙을 생각하며 작성해볼 것 컨트롤러가 모든 것을 통제한다
 REDUX 같은 것들은 사용하지 않고, props drilling을 효율적으로 할 수 있는 구조를 고민해보기
 Controller 과 View는 완벽하게 분리하는 느낌으로 작업할 것
 모든 것은 다 styled components로 래핑해서 변수명으로 관리하기 쉽게 만들어보기

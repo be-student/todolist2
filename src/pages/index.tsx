@@ -1,14 +1,7 @@
-//title
-//bar
-//tag
-//todoList=>todoItem
-
-import { GrayButton } from "../components/core/StyledComp";
-import Page from "../components/pagelayout/PageLayout";
 import TodoList from "../todolist/TodoList";
 
 //bar
 const Index = () => {
-  return <TodoList></TodoList>;
+  return <TodoList sortFunction={undefined}></TodoList>;
 };
 export default Index;
