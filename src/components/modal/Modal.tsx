@@ -128,8 +128,6 @@ const Modal: FC<Props> = ({
                 color: color,
                 backgroundColor: bgColor,
               };
-              console.log(allTags);
-              console.log(newTag);
               editTag(allTags, setAllTags, newTag, setTags, tags);
             }}
           >

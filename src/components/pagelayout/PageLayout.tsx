@@ -8,6 +8,7 @@ import Bar from "../bar/Bar";
 import Link from "next/link";
 import TodoItem from "../todoItem/TodoItem";
 import Modal from "../modal/Modal";
+import { backgroundColor } from "styled-system";
 
 interface Props {
   tasks: Array<tasks>;
@@ -95,6 +96,13 @@ const Page: FC<Props> = ({
           <Title setModal={setModal} setEdit={setEdit}></Title>
           <Bar Components={Header}></Bar>
           <Line />
+          <Tag
+            textAlign="center"
+            color={tags[filterTag].color}
+            backgroundColor={tags[filterTag].backgroundColor}
+          >
+            {filterTag}
+          </Tag>
         </BigBox>
         {!isTag && (
           <BigBox display="flex" flexDirection="column" alignItems="center">
@@ -116,6 +124,9 @@ const Page: FC<Props> = ({
                   key={tag[0]}
                   color={tag[1].color}
                   backgroundColor={tag[1].backgroundColor}
+                  onClick={() => {
+                    setFilterTag(tag[0]);
+                  }}
                 >
                   {tag[0]}
                 </Tag>

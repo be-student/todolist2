@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import "react-datepicker/dist/react-datepicker.css";
 import type { AppProps } from "next/app";
 import { DefaultTheme, ThemeProvider } from "styled-components";
+import { useState } from "react";
 const theme: DefaultTheme = {
   colors: {
     primary: "#F0F2F5",
@@ -19,9 +20,14 @@ const theme: DefaultTheme = {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [filterTag, setFilterTag] = useState<string>("");
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        filterTag={filterTag}
+        setFilterTag={setFilterTag}
+      />
     </ThemeProvider>
   );
 }

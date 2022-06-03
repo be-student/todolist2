@@ -11,18 +11,25 @@ import {
 interface Props {
   sortFunction?: undefined | ((a: tasks, b: tasks) => number);
   isTag?: boolean;
+  filterTag: string;
+  setFilterTag: any;
 }
 enum Check {
   ALL,
   COMPLETED,
   NOTCOMPLETED,
 }
-const TodoList: FC<Props> = ({ sortFunction, isTag }) => {
+const TodoList: FC<Props> = ({
+  sortFunction,
+  isTag,
+  filterTag,
+  setFilterTag,
+}) => {
   const [Tasks, SetTasks] = useState<Array<tasks>>(initialTasks);
   const [Tags, SetTags] = useState<tags>(initialTags);
   const [edit, setEdit] = useState<number>(0);
   const [filter, setFilter] = useState<Check>(0);
-  const [filterTag, setFilterTag] = useState<string>("");
+
   const sortedTasks = useMemo(() => {
     return Tasks.sort(sortFunction);
   }, [Tasks, sortFunction]);
