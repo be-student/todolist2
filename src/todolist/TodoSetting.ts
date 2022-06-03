@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export interface tasks {
   id: number;
   title: string;
@@ -103,12 +105,25 @@ export const editTask = (
   }
   setTasks(newTaskArray);
 };
-export const editTag = (tags: tags, setTags: any, editTag: any) => {
+export const editTag = (
+  allTags: tags,
+  setAllTags: any,
+  editTag: any,
+  setTags: any,
+  tags: Array<string>
+) => {
+  console.log(allTags);
   const tag: tag = {
     color: editTag.color,
     backgroundColor: editTag.backgroundColor,
   };
-  setTags((tags[editTag.title] = tag));
+  const newAllTags = _.cloneDeep(allTags);
+  newAllTags[editTag.title] = tag;
+  setAllTags(newAllTags);
+  if (tags.find((tag) => tag === editTag.title)) {
+    return;
+  }
+  setTags([editTag.title, ...tags]);
 };
 export const onSubmit = (
   edit: number,

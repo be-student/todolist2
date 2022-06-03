@@ -71,8 +71,8 @@ const TodoItem: FC<Props> = ({
                 <BigBox display="flex">
                   {task.tags.map((tag) => (
                     <Tag
-                      color={tags[tag].color}
-                      backgroundColor={tags[tag].backgroundColor}
+                      color={tags[tag] && tags[tag].color}
+                      backgroundColor={tags[tag] && tags[tag].backgroundColor}
                       key={tag}
                     >
                       {tag}

@@ -128,8 +128,9 @@ const Modal: FC<Props> = ({
                 color: color,
                 backgroundColor: bgColor,
               };
-              editTag(allTags, setAllTags, newTag);
-              setTags([...tags, tag.value]);
+              console.log(allTags);
+              console.log(newTag);
+              editTag(allTags, setAllTags, newTag, setTags, tags);
             }}
           >
             submit
@@ -145,8 +146,8 @@ const Modal: FC<Props> = ({
           {tags.map((tag) => (
             <Tag
               key={tag}
-              color={allTags[tag].color}
-              backgroundColor={allTags[tag].backgroundColor}
+              color={allTags[tag] && allTags[tag].color}
+              backgroundColor={allTags[tag] && allTags[tag].backgroundColor}
             >
               {tag}
             </Tag>
