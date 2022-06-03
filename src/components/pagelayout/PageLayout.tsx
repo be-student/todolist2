@@ -96,13 +96,16 @@ const Page: FC<Props> = ({
           <Title setModal={setModal} setEdit={setEdit}></Title>
           <Bar Components={Header}></Bar>
           <Line />
-          <Tag
-            textAlign="center"
-            color={tags[filterTag].color}
-            backgroundColor={tags[filterTag].backgroundColor}
-          >
-            {filterTag}
-          </Tag>
+          {filterTag !== "" && (
+            <Tag
+              textAlign="center"
+              color={tags[filterTag].color}
+              backgroundColor={tags[filterTag].backgroundColor}
+              onClick={() => setFilterTag("")}
+            >
+              &#34;{filterTag}&#34; 만 보기 제거
+            </Tag>
+          )}
         </BigBox>
         {!isTag && (
           <BigBox display="flex" flexDirection="column" alignItems="center">
