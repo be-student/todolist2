@@ -9,14 +9,15 @@ import {
 } from "./TodoSetting";
 
 interface Props {
-  sortFunction: undefined | ((a: tasks, b: tasks) => number);
+  sortFunction?: undefined | ((a: tasks, b: tasks) => number);
+  isTag?: boolean;
 }
 enum Check {
   ALL,
   COMPLETED,
   NOTCOMPLETED,
 }
-const TodoList: FC<Props> = ({ sortFunction }) => {
+const TodoList: FC<Props> = ({ sortFunction, isTag }) => {
   const [Tasks, SetTasks] = useState<Array<tasks>>(initialTasks);
   const [Tags, SetTags] = useState<tags>(initialTags);
   const [edit, setEdit] = useState<number>(0);
@@ -55,6 +56,7 @@ const TodoList: FC<Props> = ({ sortFunction }) => {
       setFilter={setFilter}
       filterTag={filterTag}
       setFilterTag={setFilterTag}
+      isTag={isTag}
     />
   );
 };

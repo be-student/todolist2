@@ -2,7 +2,7 @@ import { PageBackground, PageLayout } from "./Component";
 import { deleteCompletedTask, tags, tasks } from "../../todolist/TodoSetting";
 import { FC, useState } from "react";
 import { useTheme } from "styled-components";
-import Box, { BigBox, BlueBox, Line } from "../core/StyledComp";
+import Box, { BigBox, BlueBox, Line, Tag } from "../core/StyledComp";
 import Title from "../title/Title";
 import Bar from "../bar/Bar";
 import Link from "next/link";
@@ -21,6 +21,7 @@ interface Props {
   setEdit: any;
   filterTag: string;
   setFilterTag: any;
+  isTag?: boolean;
 }
 
 const Page: FC<Props> = ({
@@ -35,6 +36,7 @@ const Page: FC<Props> = ({
   setFilter,
   filterTag,
   setFilterTag,
+  isTag,
 }) => {
   const theme = useTheme();
   const [modal, setModal] = useState<boolean>(false);
@@ -94,16 +96,33 @@ const Page: FC<Props> = ({
           <Bar Components={Header}></Bar>
           <Line />
         </BigBox>
-        <BigBox display="flex" flexDirection="column" alignItems="center">
-          <TodoItem
-            tasks={tasks}
-            setTasks={setTasks}
-            filteredTasks={filteredTasks}
-            tags={tags}
-            setEdit={setEdit}
-            setModal={setModal}
-          />
-        </BigBox>
+        {!isTag && (
+          <BigBox display="flex" flexDirection="column" alignItems="center">
+            <TodoItem
+              tasks={tasks}
+              setTasks={setTasks}
+              filteredTasks={filteredTasks}
+              tags={tags}
+              setEdit={setEdit}
+              setModal={setModal}
+            />
+          </BigBox>
+        )}
+        {isTag && (
+          <BigBox display="flex" flexDirection="column" alignItems="center">
+            {Object.entries(tags).map((tag) => {
+              return (
+                <Tag
+                  key={tag[0]}
+                  color={tag[1].color}
+                  backgroundColor={tag[1].backgroundColor}
+                >
+                  {tag[0]}
+                </Tag>
+              );
+            })}
+          </BigBox>
+        )}
         <BigBox display="flex" flexDirection="column" alignItems="center">
           <Line />
           <Bar Components={Footer}></Bar>

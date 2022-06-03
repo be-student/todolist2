@@ -1,4 +1,6 @@
+import TodoList from "../todolist/TodoList";
+
 const TagPage = () => {
-  return <div>Tag</div>;
+  return <TodoList isTag></TodoList>;
 };
 export default TagPage;
