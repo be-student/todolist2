@@ -21,6 +21,7 @@ const theme: DefaultTheme = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [filterTag, setFilterTag] = useState<string>("");
+
   return (
     <ThemeProvider theme={theme}>
       <Component

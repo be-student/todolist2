@@ -6,12 +6,6 @@ interface Props {
   setFilterTag: any;
 }
 const TagPage: FC<Props> = ({ filterTag, setFilterTag }) => {
-  return (
-    <TodoList
-      filterTag={filterTag}
-      setFilterTag={setFilterTag}
-      isTag
-    ></TodoList>
-  );
+  return <TodoList filterTag={filterTag} setFilterTag={setFilterTag} isTag />;
 };
 export default TagPage;

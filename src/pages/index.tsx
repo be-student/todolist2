@@ -12,7 +12,7 @@ const Index: FC<Props> = ({ filterTag, setFilterTag }) => {
       filterTag={filterTag}
       setFilterTag={setFilterTag}
       sortFunction={undefined}
-    ></TodoList>
+    />
   );
 };
 export default Index;

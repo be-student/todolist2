@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useTheme } from "styled-components";
-import Box, { BigBox } from "../core/StyledComp";
+import Box from "../../components/core/Box";
 
 interface Props {
   setModal: any;
@@ -10,7 +10,7 @@ interface Props {
 const Title: FC<Props> = ({ setModal, setEdit }) => {
   const theme = useTheme();
   return (
-    <BigBox display="flex" alignItems="center" padding="0 1rem">
+    <Box width="100%" display="flex" alignItems="center" padding="0 1rem">
       <Box textAlign="center" flex="1">
         Poomang
       </Box>
@@ -31,7 +31,7 @@ const Title: FC<Props> = ({ setModal, setEdit }) => {
       >
         + New Task
       </Box>
-    </BigBox>
+    </Box>
   );
 };
 export default Title;
