@@ -27,20 +27,27 @@ export interface Tags {
 
 export interface Tasks extends Array<Task> {}
 
-export interface TaskObject {
+//object에는 타입을 넣을 때 적어도 set부분은 넣지 말아라
+export interface TaskGetter {
   goal: Date;
-  setGoal: any;
   complete: boolean;
-  setComplete: any;
   color: string;
-  setColor: any;
   bgColor: string;
-  setBgColor: any;
-  title: { value: string; onChange: any; setValue: any };
+  title: string;
+  // title: { value: string; onChange: any; setValue: any };
   description: any;
-  tag: { value: string; onChange: any; setValue: any };
+  tag: string;
+  // tag: { value: string; onChange: any; setValue: any };
   tags: Array<string>;
+}
+export interface TaskSetter {
+  setGoal: any;
+  setComplete: any;
+  setColor: any;
+  setBgColor: any;
   setTags: any;
+  setTitle: any;
+  setTag: any;
 }
 export interface AllTagsObject {
   allTags: Tags;

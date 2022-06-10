@@ -10,18 +10,18 @@ const Navigation = () => {
       margin="1rem 0"
     >
       <Box flex="1" textAlign="center">
-        <Link href="/">할 일</Link>
+        <Link href="/todolist">할 일</Link>
       </Box>
 
       <Box flex="1" textAlign="center">
-        <Link href="/created">생성 순</Link>
+        <Link href="/todolist/created">생성 순</Link>
       </Box>
 
       <Box flex="1" textAlign="center">
-        <Link href="/goal">마감 순</Link>
+        <Link href="/todolist/goal">마감 순</Link>
       </Box>
       <Box flex="1" textAlign="center">
-        <Link href="/tags">태그</Link>
+        <Link href="/todolist/tags">태그</Link>
       </Box>
     </Box>
   );

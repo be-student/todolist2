@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { useTheme } from "styled-components";
 import {
   Task,
@@ -6,16 +6,16 @@ import {
   Tasks,
   AllTagsObject,
   AllTasksObject,
-} from "../../@types/todoList";
+} from "../../../@types/todoList";
 import Box from "../components/core/Box";
 import { Check } from "../constants/Check";
-import { Line, Tag } from "./common/Component";
-import { PageBackground, PageLayout } from "./Component";
-import Footer from "./footer/Footer";
-import Modal from "./modal/Modal";
-import Navigation from "./Navigation/Navigation";
-import Title from "./title/Title";
-import TodoItem from "./todoItem/TodoItem";
+import { Line, Tag } from "../../common/components/Component";
+import { PageBackground, PageLayout } from "../../common/components/PageComponent";
+import Footer from "../../common/components/Footer";
+import Modal from "./Modal";
+import Navigation from "../../common/components/Navigation";
+import Title from "../../common/components/Title";
+import TodoItem from "./TodoItem";
 import { initialTags, initialTasks } from "./TodoSetting";
 
 interface Props {
@@ -32,7 +32,57 @@ const TodoList: FC<Props> = ({
 }) => {
   const theme = useTheme();
   const [tasks, setTasks] = useState<Tasks>(initialTasks);
+  const checking = useMemo(() => [1, 1, 1], []);
+  // const asdf = useRef();
+  // const b = useRef();
+  // useEffect(() => {
+  //   const temp = localStorage.getItem("Tasks");
+  //   if (!temp) {
+  //     console.log("initialize");
+  //     localStorage.setItem("Tasks", JSON.stringify(initialTasks));
+  //     checking[0] = 0;
+  //   } else {
+  //     console.log("loading");
+  //     const parsed = JSON.parse(temp);
+  //     asdf.current = parsed;
+  //     setTasks(parsed);
+  //     checking[0] = 0;
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+  // useEffect(() => {
+  //   console.log("set");
+  //   if (checking[0] === 0) {
+  //     localStorage.setItem("Tasks", JSON.stringify(asdf.current));
+  //     checking[0] = -1;
+  //   } else if (checking[0] === -1) {
+  //     localStorage.setItem("Tasks", JSON.stringify(tasks));
+  //   }
+  // }, [tasks, checking]);
+
   const [allTags, setAllTags] = useState<Tags>(initialTags);
+  // useEffect(() => {
+  //   const temp = localStorage.getItem("Tags");
+  //   if (!temp) {
+  //     localStorage.setItem("Tags", JSON.stringify(initialTags));
+  //     checking[1] = 0;
+  //   } else {
+  //     const parsed = JSON.parse(temp);
+  //     b.current = parsed;
+  //     setAllTags(parsed);
+  //     checking[1] = 0;
+  //   }
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+  // useEffect(() => {
+  //   if (checking[1] === 0) {
+  //     localStorage.setItem("Tags", JSON.stringify(b.current));
+  //     checking[1] = -1;
+  //   } else if (checking[1] === -1) {
+  //     localStorage.setItem("Tasks", JSON.stringify(allTags));
+  //   }
+  // }, [allTags, checking]);
   const [modal, setModal] = useState<boolean>(false);
   const [edit, setEdit] = useState<number>(0);
   const [filter, setFilter] = useState<Check>(Check.ALL);

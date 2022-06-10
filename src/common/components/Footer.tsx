@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { AllTasksObject, Task, Tasks } from "../../../@types/todoList";
 import Box from "../../components/core/Box";
-import { deleteCompletedTask } from "../TodoSetting";
+import { deleteCompletedTask } from "../../todo/logic/TodoSetting";
 
 interface Props {
   allTasksObject: AllTasksObject;

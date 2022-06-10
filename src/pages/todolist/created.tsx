@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Task } from "../../@types/todoList";
-import TodoList from "../todolist/TodoList";
+import { Task } from "../../../@types/todoList";
+import TodoList from "../../todo/components/TodoList";
 
 interface Props {
   filterTag: string;

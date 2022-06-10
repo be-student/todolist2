@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import { editTag, onSubmit } from "../TodoSetting";
+import { editTag, onSubmit } from "../logic/TodoSetting";
 
 import DatePicker from "react-datepicker";
 import useInput from "../../hooks/core/useInput";
 import Box from "../../components/core/Box";
 import Input from "../../components/core/Input";
 import { useTheme } from "styled-components";
-import { Tag } from "../common/Component";
+import { Tag } from "../../common/components/DeleteButton";
 
 import styled from "styled-components";
 import Button from "../../components/core/Button";

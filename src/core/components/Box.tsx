@@ -7,9 +7,12 @@ import {
   flexbox,
   border,
   backgroundColor,
+  TypographyProps,
+  LayoutProps,
 } from "styled-system";
 
-const Box = styled.div`
+type TBoxProps = TypographyProps & LayoutProps;//+input 이나 onclick을 막는다
+const Box = styled.div<TBoxProps>`
   ${typography}
   ${layout}
   ${color}

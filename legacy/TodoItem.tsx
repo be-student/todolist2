@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useTheme } from "styled-components";
-import { checkTask, deleteTask } from "../TodoSetting";
-import { DeleteButton, EditButton, Tag } from "../common/Component";
+import { checkTask, deleteTask } from "../src/todo/logic/TodoSetting";
+import { DeleteButton, EditButton, Tag } from "../src/common/components/DeleteButton";
 import Box from "../../components/core/Box";
 import Input from "../../components/core/Input";
-import { AllTagsObject, AllTasksObject, Tasks } from "../../../@types/todoList";
+import { AllTagsObject, AllTasksObject, Tasks } from "../@types/todoList";
 
 interface Props {
   allTasksObject: AllTasksObject;

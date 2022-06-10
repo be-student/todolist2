@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { Task } from "../../@types/todoList";
-import TodoList from "../todolist/TodoList";
+import TodoList from "../../todo/components/TodoList";
 
 interface Props {
   filterTag: string;
@@ -12,7 +11,7 @@ const Index: FC<Props> = ({ filterTag, setFilterTag }) => {
     <TodoList
       filterTag={filterTag}
       setFilterTag={setFilterTag}
-      sortFunction={(a: Task, b: Task) => a.goalAt - b.goalAt}
+      sortFunction={undefined}
     />
   );
 };

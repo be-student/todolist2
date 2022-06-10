@@ -6,7 +6,7 @@ import {
   Task,
   TaskObject,
   Tasks,
-} from "../../@types/todoList";
+} from "../../../@types/todoList";
 
 export const initialTasks: Tasks = [
   {
